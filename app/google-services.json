@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "36874973195",
+    "firebase_url": "https://cong-dong-meme.firebaseio.com",
+    "project_id": "cong-dong-meme",
+    "storage_bucket": "cong-dong-meme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36874973195:android:ca7f905c12645c8a03570e",
+        "android_client_info": {
+          "package_name": "com.trungdaniel.congdongmeme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36874973195-v6otjqsdlfal4f0cjb8vkrhdm74jhm29.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trungdaniel.congdongmeme",
+            "certificate_hash": "81f88823f516278f033932e38732ccb17edc0952"
+          }
+        },
+        {
+          "client_id": "36874973195-b9asi3idd024cpk1h23ulhat5bt0idek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGIYn7So9rQYnGn8Xk7vW0PEjvVJeyWGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36874973195-b9asi3idd024cpk1h23ulhat5bt0idek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
