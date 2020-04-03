@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nguoiFragment"
+        android:icon="@mipmap/ic_launcher_round"
         android:title="Người"></item>
     <item
         android:id="@+id/conVatFragment"
+        android:icon="@mipmap/ic_launcher_round"
         android:title="Con Vật"></item>
     <item
         android:id="@+id/hoatHinhFragment"
+        android:icon="@mipmap/ic_launcher_round"
         android:title="Hoạt Hình"></item>
     <item
         android:id="@+id/khacFragment"
+        android:icon="@mipmap/ic_launcher_round"
         android:title="Khác"></item>
 </menu>

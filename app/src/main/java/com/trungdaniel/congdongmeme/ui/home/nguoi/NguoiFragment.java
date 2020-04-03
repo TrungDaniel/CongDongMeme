@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.trungdaniel.congdongmeme.R;
 import com.trungdaniel.congdongmeme.ui.home.Anh;
 
@@ -100,8 +101,9 @@ public class NguoiFragment extends Fragment {
 
     private void init(View view) {
         rvNguoi = view.findViewById(R.id.rv_nguoi);
-        layoutManager = new GridLayoutManager(getContext(), 4);
+        layoutManager = new GridLayoutManager(getContext(), 3);
         rvNguoi.setLayoutManager(layoutManager);
+        rvNguoi.addItemDecoration( new LayoutMarginDecoration( 3, 10 ) );
         nguoiAdapter = new NguoiAdapter(getContext(), getAnhNguoi());
         rvNguoi.setAdapter(nguoiAdapter);
 

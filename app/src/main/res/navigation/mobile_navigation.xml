@@ -8,36 +8,36 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.trungdaniel.congdongmeme.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_tao"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.trungdaniel.congdongmeme.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_yeu_thich"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.trungdaniel.congdongmeme.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_da_luu"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_tools"
         android:name="com.trungdaniel.congdongmeme.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
+        android:label="@string/menu_cai_dat"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_share"
         android:name="com.trungdaniel.congdongmeme.ui.share.ShareFragment"
-        android:label="@string/menu_share"
+        android:label="@string/menu_gioi_thieu"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
         android:name="com.trungdaniel.congdongmeme.ui.send.SendFragment"
-        android:label="@string/menu_send"
+        android:label="@string/menu_them_meme"
         tools:layout="@layout/fragment_send" />
 </navigation>
