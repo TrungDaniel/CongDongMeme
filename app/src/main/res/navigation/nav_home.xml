@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/nguoiFragment">
+
+    <fragment
+        android:id="@+id/nguoiFragment"
+        android:name="com.trungdaniel.congdongmeme.ui.home.nguoi.NguoiFragment"
+        android:label="fragment_nguoi"
+        tools:layout="@layout/fragment_nguoi" />
+    <fragment
+        android:id="@+id/conVatFragment"
+        android:name="com.trungdaniel.congdongmeme.ConVatFragment"
+        android:label="fragment_con_vat"
+        tools:layout="@layout/fragment_con_vat" />
+    <fragment
+        android:id="@+id/hoatHinhFragment"
+        android:name="com.trungdaniel.congdongmeme.HoatHinhFragment"
+        android:label="fragment_hoat_hinh"
+        tools:layout="@layout/fragment_hoat_hinh" />
+    <fragment
+        android:id="@+id/khacFragment"
+        android:name="com.trungdaniel.congdongmeme.KhacFragment"
+        android:label="fragment_khac"
+        tools:layout="@layout/fragment_khac" />
+</navigation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nguoiFragment"
+        android:title="Người"></item>
+    <item
+        android:id="@+id/conVatFragment"
+        android:title="Con Vật"></item>
+    <item
+        android:id="@+id/hoatHinhFragment"
+        android:title="Hoạt Hình"></item>
+    <item
+        android:id="@+id/khacFragment"
+        android:title="Khác"></item>
+</menu>

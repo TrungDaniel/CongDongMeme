@@ -11,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class SendFragment extends Fragment {
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private ProgressDialog progress;
+    private Spinner spUpload;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -100,12 +103,8 @@ public class SendFragment extends Fragment {
 
     private void uploadFile() {
         if (mUriImage != null) {
-
-
             final StorageReference filepath = FirebaseStorage.getInstance().getReference().child("uploads").child(System.currentTimeMillis() + "." + getFileUrl(mUriImage));
-
             Bitmap bitmap = null;
-
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mUriImage);
             } catch (IOException e) {
@@ -115,16 +114,16 @@ public class SendFragment extends Fragment {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] data = baos.toByteArray();
             UploadTask uploadTask = filepath.putBytes(data);
-            progress = new ProgressDialog(getContext());
+        /*    progress = new ProgressDialog(getContext());
             progress.setTitle("Vui lòng đợi!!");
             progress.setMessage("Tài khoản của bạn đang đợi tạo");
             progress.setCancelable(false);
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progress.show();
+            progress.show();*/
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progress.dismiss();
+                    //  progress.dismiss();
                     Toast.makeText(getActivity(), "" + e, Toast.LENGTH_SHORT).show();
                 }
             });
@@ -134,12 +133,11 @@ public class SendFragment extends Fragment {
                     filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            UploadImage uploadImage = new UploadImage(edtNameImage.getText().toString().trim()
-                                    , uri.toString());
+                            UploadImage uploadImage = new UploadImage(uri.toString());
 
                             String idUpload = databaseReference.push().getKey();
-                            databaseReference.child(idUpload).setValue(uploadImage);
-                            progress.dismiss();
+                            databaseReference.child(spUpload.getSelectedItem().toString()).child(idUpload).setValue(uploadImage);
+                            // progress.dismiss();
 
                         }
 
@@ -158,10 +156,13 @@ public class SendFragment extends Fragment {
         btnPickImage = view.findViewById(R.id.btn_pick_image);
         btnUploadImage = view.findViewById(R.id.btn_upload_anh);
         tvShowImage = view.findViewById(R.id.tv_show_image);
-        edtNameImage = view.findViewById(R.id.edt_name_image);
         imgAnh = view.findViewById(R.id.img_anh);
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
         databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
+        spUpload = view.findViewById(R.id.sp_upload);
+        String[] items = new String[]{"Người", "Con vật", "Hoạt hình", "khác"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        spUpload.setAdapter(adapter);
 
 
     }

@@ -1,9 +1,9 @@
-package com.trungdaniel.congdongmeme.model;
+package com.trungdaniel.congdongmeme.ui.home;
 
-public class UploadImage {
+public class Anh {
     private String uriImage;
 
-    public UploadImage(String uriImage) {
+    public Anh(String uriImage) {
         this.uriImage = uriImage;
     }
 
