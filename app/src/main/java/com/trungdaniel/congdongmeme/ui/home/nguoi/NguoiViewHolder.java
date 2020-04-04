@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.trungdaniel.congdongmeme.EditAnhActivity;
 import com.trungdaniel.congdongmeme.R;
 
 public class NguoiViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -22,6 +23,6 @@ public class NguoiViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(view.getContext(), "dmm", Toast.LENGTH_SHORT).show();
+
     }
 }
