@@ -27,7 +27,6 @@ public class SavedFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-
         return root;
     }
 

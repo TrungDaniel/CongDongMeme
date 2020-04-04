@@ -34,31 +34,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/edt_anh_1"
+        <TextView
+            android:id="@+id/tv_anh_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:background="#00000000"
             android:gravity="center"
-            android:hint="Chạm vào đây để thêm chú thích"
+            android:text="Chạm vào đây để thêm chú thích"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
             android:textSize="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/img_edit_anh" />
 
-        <EditText
-            android:id="@+id/edt_anh_2"
+        <TextView
+            android:id="@+id/tv_anh_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:background="#00000000"
             android:gravity="center"
-            android:hint="Chạm vào đây để thêm chú thích"
+            android:text="Chạm vào đây để thêm chú thích"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
             android:textSize="22dp"
             app:layout_constraintBottom_toBottomOf="@+id/img_edit_anh"
             app:layout_constraintEnd_toEndOf="parent"

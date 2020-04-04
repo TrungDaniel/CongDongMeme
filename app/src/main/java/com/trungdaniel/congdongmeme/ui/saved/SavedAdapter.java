@@ -1,6 +1,8 @@
 package com.trungdaniel.congdongmeme.ui.saved;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +33,17 @@ public class SavedAdapter extends RecyclerView.Adapter<SavedAdapter.SavedViewHod
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SavedViewHoder holder, int position) {
+    public void onBindViewHolder(@NonNull SavedViewHoder holder, final int position) {
         Glide.with(context).load(savedList.get(position).getUri().toString()).placeholder(R.drawable.ic_launcher_background).into(holder.imgSavedAnh);
+        holder.imgSavedAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setDataAndType(savedList.get(position).getUri(), "image/*");
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
