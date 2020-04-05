@@ -15,5 +15,9 @@
     <string name="menu_them_meme">Thêm Meme</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="idADapp">ca-app-pub-6851769271647416~9601900263</string>
+    <string name="idADfullscreen">ca-app-pub-3159028965186310/2865386932</string>
+    <string name="idBannerTest">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="idBanner">ca-app-pub-3159028965186310/9231484739</string>
 </resources>

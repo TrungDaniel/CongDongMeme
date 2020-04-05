@@ -41,4 +41,6 @@ dependencies {
     compile('com.github.thekhaeng:recycler-margin:1.2.1') {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
+
+    implementation 'com.google.android.gms:play-services-ads:19.0.0'
 }

@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,6 +40,8 @@ public class EditAnhActivity extends AppCompatActivity {
     private Button btnLuuAnh;
     private Bitmap bitmap;
     private TextView tvText1, tvText2;
+    private InterstitialAd mInterstitialAd;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +50,13 @@ public class EditAnhActivity extends AppCompatActivity {
         init();
         setAnh();
         luuAnh();
+        MobileAds.initialize(this, "ca-app-pub-6851769271647416~9601900263");
+        adView = findViewById(R.id.adviewbanner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
     }
+
 
     private void luuAnh() {
         btnLuuAnh.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +101,7 @@ public class EditAnhActivity extends AppCompatActivity {
 
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
 
@@ -94,6 +110,7 @@ public class EditAnhActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void setAnh() {
