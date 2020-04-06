@@ -21,6 +21,7 @@ import com.trungdaniel.congdongmeme.R;
 public class HomeFragment extends Fragment {
     private NavController navController;
     private BottomNavigationView bottomNavigationView;
+    private TextView tvBanner;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -37,5 +38,6 @@ public class HomeFragment extends Fragment {
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_home);
         bottomNavigationView = view.findViewById(R.id.bottom_home);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
     }
 }

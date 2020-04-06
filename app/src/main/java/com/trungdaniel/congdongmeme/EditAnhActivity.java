@@ -40,7 +40,6 @@ public class EditAnhActivity extends AppCompatActivity {
     private Button btnLuuAnh;
     private Bitmap bitmap;
     private TextView tvText1, tvText2;
-    private InterstitialAd mInterstitialAd;
     private AdView adView;
 
     @Override
@@ -54,7 +53,6 @@ public class EditAnhActivity extends AppCompatActivity {
         adView = findViewById(R.id.adviewbanner);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
-
     }
 
 
