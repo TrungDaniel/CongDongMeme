@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -41,7 +43,16 @@ public class SavedAdapter extends RecyclerView.Adapter<SavedAdapter.SavedViewHod
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.setDataAndType(savedList.get(position).getUri(), "image/*");
+
+
+                /*try {
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(context, "chức năng bị lỗi, xin vui lòng báo cáo đến mình ", Toast.LENGTH_SHORT).show();
+
+                }*/
                 context.startActivity(intent);
+
             }
         });
     }

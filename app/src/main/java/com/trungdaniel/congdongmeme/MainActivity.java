@@ -1,5 +1,10 @@
 package com.trungdaniel.congdongmeme;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.gms.ads.AdRequest;
@@ -8,8 +13,11 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -52,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         adView = findViewById(R.id.adviewbanner_main);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+        //isReadStoragePermissionGranted();
+        isWriteStoragePermissionGranted();
+
     }
 
     @Override
@@ -67,5 +78,41 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    public boolean isReadStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("bugs", "Permission is granted1");
+                return true;
+            } else {
+
+                Log.v("bugs", "Permission is revoked1");
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("bugs", "Permission is granted1");
+            return true;
+        }
+    }
+
+    public boolean isWriteStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("bugs", "Permission is granted2");
+                return true;
+            } else {
+
+                Log.v("bugs", "Permission is revoked2");
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("bugs", "Permission is granted2");
+            return true;
+        }
+    }
+
 
 }

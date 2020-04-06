@@ -1,14 +1,19 @@
 package com.trungdaniel.congdongmeme.ui.saved;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,6 +63,8 @@ public class SavedFragment extends Fragment {
 
         return savedArrayList;
     }
+
+
 
     private void init(View view) {
         rvSaved = view.findViewById(R.id.rv_saved);
