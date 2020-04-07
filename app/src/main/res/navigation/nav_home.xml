@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_nguoi" />
     <fragment
         android:id="@+id/conVatFragment"
-        android:name="com.trungdaniel.congdongmeme.ConVatFragment"
+        android:name="com.trungdaniel.congdongmeme.ui.home.convat.ConVatFragment"
         android:label="fragment_con_vat"
         tools:layout="@layout/fragment_con_vat" />
     <fragment

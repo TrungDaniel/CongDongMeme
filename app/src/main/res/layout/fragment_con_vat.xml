@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConVatFragment">
+    tools:context=".ui.home.convat.ConVatFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_con_vat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="2" />
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btn_tai_con_vat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/iciel_panton_black"
+        android:text="Tải dữ liệu"
+        android:textAllCaps="false"
+        android:textSize="12dp"></Button>
+
+    <Button
+        android:id="@+id/btn_show_con_vat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_tai_con_vat"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/iciel_panton_black"
+        android:text="hiển thị meme"
+        android:textAllCaps="false"
+        android:textSize="12dp">
+
+    </Button>
+</RelativeLayout>
