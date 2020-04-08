@@ -17,12 +17,12 @@
         tools:layout="@layout/fragment_con_vat" />
     <fragment
         android:id="@+id/hoatHinhFragment"
-        android:name="com.trungdaniel.congdongmeme.HoatHinhFragment"
+        android:name="com.trungdaniel.congdongmeme.ui.home.hoathinh.HoatHinhFragment"
         android:label="fragment_hoat_hinh"
         tools:layout="@layout/fragment_hoat_hinh" />
     <fragment
         android:id="@+id/khacFragment"
-        android:name="com.trungdaniel.congdongmeme.KhacFragment"
+        android:name="com.trungdaniel.congdongmeme.ui.home.khac.KhacFragment"
         android:label="fragment_khac"
         tools:layout="@layout/fragment_khac" />
 </navigation>

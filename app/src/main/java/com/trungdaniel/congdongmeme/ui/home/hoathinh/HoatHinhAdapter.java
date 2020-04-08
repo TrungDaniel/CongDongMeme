@@ -1,4 +1,4 @@
-package com.trungdaniel.congdongmeme.ui.home.convat;
+package com.trungdaniel.congdongmeme.ui.home.hoathinh;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,31 +14,30 @@ import com.bumptech.glide.Glide;
 import com.trungdaniel.congdongmeme.EditAnhActivity;
 import com.trungdaniel.congdongmeme.R;
 import com.trungdaniel.congdongmeme.ui.home.Anh;
-import com.trungdaniel.congdongmeme.ui.saved.Saved;
 
 import java.util.List;
 
-public class ConVatAdapter extends RecyclerView.Adapter<ConVatAdapter.ConVatViewHolder> {
+public class HoatHinhAdapter extends RecyclerView.Adapter<HoatHinhAdapter.HoatHinhViewHolder> {
     private Context context;
     private List<Anh> anhList;
 
-    public ConVatAdapter(Context context, List<Anh> anhList) {
+    public HoatHinhAdapter(Context context, List<Anh> anhList) {
         this.context = context;
         this.anhList = anhList;
     }
 
     @NonNull
     @Override
-    public ConVatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HoatHinhViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_nguoi_layout, parent, false);
-        return new ConVatViewHolder(view);
+        return new HoatHinhViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ConVatViewHolder holder, final int position) {
-        Glide.with(context).load(anhList.get(position).getUriImage()).placeholder(R.drawable.ic_launcher_background).into(holder.imgConVat);
+    public void onBindViewHolder(@NonNull HoatHinhViewHolder holder, final int position) {
+        Glide.with(context).load(anhList.get(position).getUriImage()).placeholder(R.drawable.ic_launcher_background).into(holder.imgHoatHinh);
 
-        holder.imgConVat.setOnClickListener(new View.OnClickListener() {
+        holder.imgHoatHinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, EditAnhActivity.class);
@@ -53,14 +52,12 @@ public class ConVatAdapter extends RecyclerView.Adapter<ConVatAdapter.ConVatView
         return anhList.size();
     }
 
+    class HoatHinhViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imgHoatHinh;
 
-    public class ConVatViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imgConVat;
-
-        public ConVatViewHolder(@NonNull View itemView) {
+        public HoatHinhViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgConVat = itemView.findViewById(R.id.img_item_nguoi);
+            imgHoatHinh = itemView.findViewById(R.id.img_item_nguoi);
         }
     }
-
 }

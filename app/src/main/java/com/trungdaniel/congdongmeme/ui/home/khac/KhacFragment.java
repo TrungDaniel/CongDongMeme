@@ -1,13 +1,6 @@
-package com.trungdaniel.congdongmeme.ui.home.convat;
+package com.trungdaniel.congdongmeme.ui.home.khac;
 
 
-import android.app.DownloadManager;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,15 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,19 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
-import com.trungdaniel.congdongmeme.MainActivity;
 import com.trungdaniel.congdongmeme.R;
 import com.trungdaniel.congdongmeme.ui.home.Anh;
-import com.trungdaniel.congdongmeme.ui.home.nguoi.NguoiAdapter;
-import com.trungdaniel.congdongmeme.ui.saved.Saved;
+import com.trungdaniel.congdongmeme.ui.home.hoathinh.HoatHinhAdapter;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +30,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ConVatFragment extends Fragment {
-    private RecyclerView rvConVat;
+public class KhacFragment extends Fragment {
+    private RecyclerView rvKhac;
     private RecyclerView.LayoutManager layoutManager;
-    ConVatAdapter conVatAdapter;
+    private KhacAdapter khacAdapter;
 
-    public ConVatFragment() {
+    public KhacFragment() {
         // Required empty public constructor
     }
 
@@ -66,7 +44,7 @@ public class ConVatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_con_vat, container, false);
+        return inflater.inflate(R.layout.fragment_khac, container, false);
     }
 
     @Override
@@ -77,7 +55,7 @@ public class ConVatFragment extends Fragment {
     }
 
     private void getKey() {
-        DatabaseReference referenceKey = FirebaseDatabase.getInstance().getReference().child("uploads").child("Con vật");
+        DatabaseReference referenceKey = FirebaseDatabase.getInstance().getReference().child("uploads").child("khác");
         referenceKey.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -96,7 +74,7 @@ public class ConVatFragment extends Fragment {
     }
 
     private void getData(String key) {
-        DatabaseReference referenceData = FirebaseDatabase.getInstance().getReference().child("uploads").child("Con vật").child(key);
+        DatabaseReference referenceData = FirebaseDatabase.getInstance().getReference().child("uploads").child("khác").child(key);
         referenceData.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -107,7 +85,7 @@ public class ConVatFragment extends Fragment {
                     }
                     Anh anh = new Anh(uriAnh);
                     anhArrayList.add(anh);
-                    conVatAdapter.notifyDataSetChanged();
+                    khacAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -119,12 +97,12 @@ public class ConVatFragment extends Fragment {
     }
 
     private void init(View view) {
-        rvConVat = view.findViewById(R.id.rv_con_vat);
+        rvKhac = view.findViewById(R.id.rv_khac);
         layoutManager = new GridLayoutManager(getContext(), 3);
-        rvConVat.setLayoutManager(layoutManager);
-        rvConVat.addItemDecoration(new LayoutMarginDecoration(3, 10));
-        conVatAdapter = new ConVatAdapter(getContext(), getAnhNguoi());
-        rvConVat.setAdapter(conVatAdapter);
+        rvKhac.setLayoutManager(layoutManager);
+        rvKhac.addItemDecoration(new LayoutMarginDecoration(3, 10));
+        khacAdapter = new KhacAdapter(getContext(), getAnhNguoi());
+        rvKhac.setAdapter(khacAdapter);
 
     }
 
@@ -133,6 +111,5 @@ public class ConVatFragment extends Fragment {
     private List<Anh> getAnhNguoi() {
         return anhArrayList;
     }
-
 
 }
