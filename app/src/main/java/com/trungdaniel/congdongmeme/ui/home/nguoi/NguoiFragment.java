@@ -73,6 +73,7 @@ public class NguoiFragment extends Fragment {
 
             }
         });
+
     }
 
     private void getData(String key) {
@@ -100,12 +101,14 @@ public class NguoiFragment extends Fragment {
 
 
     private void init(View view) {
+
         rvNguoi = view.findViewById(R.id.rv_nguoi);
         layoutManager = new GridLayoutManager(getContext(), 3);
         rvNguoi.setLayoutManager(layoutManager);
         rvNguoi.addItemDecoration(new LayoutMarginDecoration(3, 10));
         nguoiAdapter = new NguoiAdapter(getContext(), getAnhNguoi());
         rvNguoi.setAdapter(nguoiAdapter);
+
 
     }
 

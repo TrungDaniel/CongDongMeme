@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.trungdaniel.congdongmeme.R;
+import com.trungdaniel.congdongmeme.XemAnhActivity;
 
 import java.util.List;
 
@@ -40,17 +41,8 @@ public class SavedAdapter extends RecyclerView.Adapter<SavedAdapter.SavedViewHod
         holder.imgSavedAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setDataAndType(savedList.get(position).getUri(), "image/*");
-
-
-                /*try {
-                    context.startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(context, "chức năng bị lỗi, xin vui lòng báo cáo đến mình ", Toast.LENGTH_SHORT).show();
-
-                }*/
+                Intent intent = new Intent(context, XemAnhActivity.class);
+                intent.putExtra("uri", savedList.get(position).getUri().toString());
                 context.startActivity(intent);
 
             }

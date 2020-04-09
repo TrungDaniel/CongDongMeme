@@ -1,9 +1,13 @@
 package com.trungdaniel.congdongmeme;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -13,11 +17,16 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,11 +40,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static android.Manifest.permission.CAMERA;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private AdView adView;
+    private ImageView imgOpenCamera, imgOpenGalary;
+    public static final int PICK_IMAGE = 1;
+    private Uri file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +80,69 @@ public class MainActivity extends AppCompatActivity {
         adView = findViewById(R.id.adviewbanner_main);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
-        //isReadStoragePermissionGranted();
         isWriteStoragePermissionGranted();
+        chonAnh();
+
+    }
+
+    private void chonAnh() {
+        imgOpenCamera = findViewById(R.id.img_open_camera);
+        imgOpenGalary = findViewById(R.id.img_open_galary);
+        imgOpenCamera.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                file = Uri.fromFile(getOutputMediaFile());
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
+                startActivityForResult(intent, 100);
+            }
+        });
+        imgOpenGalary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+            }
+        });
+    }
+
+    private static File getOutputMediaFile() {
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "CameraDemo");
+
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                return null;
+            }
+        }
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        return new File(mediaStorageDir.getPath() + File.separator +
+                "IMG_" + timeStamp + ".jpg");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE) {
+            try {
+                file=data.getData();
+                Intent intent = new Intent(MainActivity.this, EditAnhActivity.class);
+                intent.putExtra("urlAnh", file.toString());
+                startActivity(intent);
+            }
+            catch (Exception e){
+                Toast.makeText(this, "Vui lòng chọn ảnh", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        else {
+            Intent intent = new Intent(MainActivity.this, EditAnhActivity.class);
+            intent.putExtra("urlAnh", file.toString());
+            startActivity(intent);
+        }
 
     }
 
@@ -78,34 +159,17 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    public boolean isReadStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v("bugs", "Permission is granted1");
-                return true;
-            } else {
-
-                Log.v("bugs", "Permission is revoked1");
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
-                return false;
-            }
-        } else { //permission is automatically granted on sdk<23 upon installation
-            Log.v("bugs", "Permission is granted1");
-            return true;
-        }
-    }
 
     public boolean isWriteStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            if (checkSelfPermission(permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.v("bugs", "Permission is granted2");
                 return true;
             } else {
 
                 Log.v("bugs", "Permission is revoked2");
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.WRITE_EXTERNAL_STORAGE}, 2);
                 return false;
             }
         } else { //permission is automatically granted on sdk<23 upon installation

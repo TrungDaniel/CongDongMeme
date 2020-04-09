@@ -2,6 +2,7 @@ package com.trungdaniel.congdongmeme;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
@@ -178,6 +179,18 @@ public class EditAnhActivity extends AppCompatActivity {
         btnLuuAnh = findViewById(R.id.btn_luu_anh);
         tvText1 = findViewById(R.id.tv_anh_1);
         tvText2 = findViewById(R.id.tv_anh_2);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_edit);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }
