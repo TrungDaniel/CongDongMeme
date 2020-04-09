@@ -14,6 +14,7 @@ import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.trungdaniel.congdongmeme.R;
 import com.trungdaniel.congdongmeme.XemAnhActivity;
 
@@ -37,7 +38,7 @@ public class SavedAdapter extends RecyclerView.Adapter<SavedAdapter.SavedViewHod
 
     @Override
     public void onBindViewHolder(@NonNull SavedViewHoder holder, final int position) {
-        Glide.with(context).load(savedList.get(position).getUri().toString()).placeholder(R.drawable.ic_launcher_background).into(holder.imgSavedAnh);
+        Glide.with(context).load(savedList.get(position).getUri().toString()).placeholder(R.drawable.img_loading_image).transition(DrawableTransitionOptions.withCrossFade()).into(holder.imgSavedAnh);
         holder.imgSavedAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

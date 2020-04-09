@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.trungdaniel.congdongmeme.EditAnhActivity;
 import com.trungdaniel.congdongmeme.R;
 import com.trungdaniel.congdongmeme.ui.home.Anh;
@@ -35,7 +36,7 @@ public class HoatHinhAdapter extends RecyclerView.Adapter<HoatHinhAdapter.HoatHi
 
     @Override
     public void onBindViewHolder(@NonNull HoatHinhViewHolder holder, final int position) {
-        Glide.with(context).load(anhList.get(position).getUriImage()).placeholder(R.drawable.ic_launcher_background).into(holder.imgHoatHinh);
+        Glide.with(context).load(anhList.get(position).getUriImage()).placeholder(R.drawable.img_loading_image).transition(DrawableTransitionOptions.withCrossFade()).into(holder.imgHoatHinh);
 
         holder.imgHoatHinh.setOnClickListener(new View.OnClickListener() {
             @Override

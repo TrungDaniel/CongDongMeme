@@ -39,7 +39,7 @@ public class XemAnhActivity extends AppCompatActivity {
         imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bitmapDrawable = (BitmapDrawable) imgViewAnh.getDrawable();
+                /*bitmapDrawable = (BitmapDrawable) imgViewAnh.getDrawable();
                 bitmap = bitmapDrawable.getBitmap();
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("image/jpeg");
@@ -54,7 +54,8 @@ public class XemAnhActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/temporary_file.jpg"));
-                startActivity(Intent.createChooser(share, "Share Image"));
+                startActivity(Intent.createChooser(share, "Share Image"));*/
+                Toast.makeText(XemAnhActivity.this, "Chức năng đang phát triển", Toast.LENGTH_SHORT).show();
             }
         });
     }

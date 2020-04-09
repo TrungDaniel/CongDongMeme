@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.trungdaniel.congdongmeme.EditAnhActivity;
 import com.trungdaniel.congdongmeme.R;
 import com.trungdaniel.congdongmeme.ui.home.Anh;
@@ -40,7 +41,8 @@ public class NguoiAdapter extends RecyclerView.Adapter<NguoiViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NguoiViewHolder holder, final int position) {
-        Glide.with(context).load(anhList.get(position).getUriImage()).placeholder(R.drawable.ic_launcher_background).into(holder.imgItemNguoi);
+        Glide.with(context).load(anhList.get(position).getUriImage()).placeholder(R.drawable.img_loading_image).transition(DrawableTransitionOptions.withCrossFade())
+                .into(holder.imgItemNguoi);
 
         holder.imgItemNguoi.setOnClickListener(new View.OnClickListener() {
             @Override

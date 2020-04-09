@@ -92,10 +92,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                file = Uri.fromFile(getOutputMediaFile());
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
-                startActivityForResult(intent, 100);
+                try {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    file = Uri.fromFile(getOutputMediaFile());
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
+                    startActivityForResult(intent, 100);
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "lỗi không mở được camera", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         imgOpenGalary.setOnClickListener(new View.OnClickListener() {
@@ -122,23 +127,21 @@ public class MainActivity extends AppCompatActivity {
         return new File(mediaStorageDir.getPath() + File.separator +
                 "IMG_" + timeStamp + ".jpg");
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
             try {
-                file=data.getData();
+                file = data.getData();
                 Intent intent = new Intent(MainActivity.this, EditAnhActivity.class);
                 intent.putExtra("urlAnh", file.toString());
                 startActivity(intent);
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(this, "Vui lòng chọn ảnh", Toast.LENGTH_SHORT).show();
             }
 
         }
-        else {
+        if (resultCode == RESULT_OK) {
             Intent intent = new Intent(MainActivity.this, EditAnhActivity.class);
             intent.putExtra("urlAnh", file.toString());
             startActivity(intent);
